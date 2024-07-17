@@ -5,7 +5,7 @@ import urllib.parse
 
 # Database connection details
 host = "localhost"
-user = "root"
+user = "test"
 password = "Nagunaveen@143"
 database = "bus_informations"
 password_encoded = urllib.parse.quote_plus(password)
