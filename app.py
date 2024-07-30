@@ -22,7 +22,7 @@ def fetch_data(query):
     return df
 
 # Function to fetch distinct values as a list
-def fetch_data_as_list(query):
+def fetch_data_as_list(query, state=None):
     with engine.connect() as connection:
         res = connection.execute(text(query))
     return [row[0] for row in res]
@@ -41,13 +41,6 @@ except Exception as e:
     st.sidebar.error(f"Error fetching states of bus: {e}")
     state_of_bus_list = []
 
-# Fetch distinct bus routes
-bus_route_query = "SELECT DISTINCT bus_route_name FROM redbus_prj"
-try:
-    bus_route_list = fetch_data_as_list(bus_route_query)
-except Exception as e:
-    st.sidebar.error(f"Error fetching bus routes: {e}")
-    bus_route_list = []
 
 # Fetch distinct bus types
 bus_type_query = "SELECT DISTINCT filtered_bus_types FROM redbus_prj"
@@ -67,6 +60,15 @@ except Exception as e:
 
 # Sidebar filter widgets
 state_of_bus = st.sidebar.selectbox('Select State of Bus', options=state_of_bus_list)
+
+# Fetch distinct bus routes
+bus_route_query = f"SELECT DISTINCT bus_route_name FROM redbus_prj where state_of_bus = '{state_of_bus}'"
+try:
+    bus_route_list = fetch_data_as_list(bus_route_query, state=state_of_bus)
+except Exception as e:
+    st.sidebar.error(f"Error fetching bus routes: {e}")
+    bus_route_list = []
+
 route = st.sidebar.selectbox('Select Route', options=bus_route_list)
 bustype = st.sidebar.selectbox('Select Bus Type', options=bus_type_list)
 price_range = st.sidebar.selectbox(
