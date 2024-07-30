@@ -103,6 +103,7 @@ elif price_range == '2000 - 3000':
 elif price_range == '3000 - 4000':
     price_min, price_max = 3000, 4000
 
+
 # Set star rating range based on user selection
 if star_rating_range == '<3.00':
     star_rating_min, star_rating_max = 0.0, 3.0
