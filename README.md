@@ -121,7 +121,8 @@ Drop = True: Ensures that old index is not added as a column in the DataFrame.
 7. Streamlit Filters: Provides interactive filters for users to select bus route, type, price range, AC status and star rating.
 ### Streamlit app layout:
 
- 
+ ![streamlit_layout](https://github.com/user-attachments/assets/2cd87e3c-e22f-41be-885b-656beb4fabd7)
+
 
 ### Conclusion:
 
