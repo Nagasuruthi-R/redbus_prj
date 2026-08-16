@@ -6,7 +6,7 @@ import urllib.parse
 # Database connection details
 host = "localhost"
 user = "root"
-password = "Nagunaveen@143"
+password = "test"
 database = "bus"
 password_encoded = urllib.parse.quote_plus(password)
 DATABASE_URL = f"mysql+pymysql://{user}:{password_encoded}@{host}/{database}"
